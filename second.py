@@ -1,14 +1,16 @@
 import hashlib
 import os
 
-
+supported_algo = ['md5','sha1','sha256']
 def get_hash(algo,name,f_dir):
     f_path = os.path.join(f_dir,name)
     if os.path.exists(f_path)== False:
         return ('NOT FOUND')
-    if algo.lower() =='md5':
+    if algo not in supported_algo:
+        return ('NOT SUPPORTED')
+    if algo =='md5':
         hash_value = hashlib.md5()
-    elif algo.lower() =='sha1':
+    elif algo =='sha1':
         hash_value = hashlib.sha1()
     else:
         hash_value = hashlib.sha256()
@@ -26,14 +28,16 @@ def hash_check(input_file, file_dir):
     for line in data.splitlines():
         params = line.split()
         name = params[0]
-        algo = params[1]
+        algo = params[1].lower()
         checksum = params [2]
         hash_value = get_hash(algo,name,file_dir)
         if hash_value==checksum:
             print (name, 'OK')
         elif hash_value == 'NOT FOUND':
             print (name, 'NOT FOUND')
+        elif hash_value == 'NOT SUPPORTED':
+            print (name, 'HASH TYPE', algo.upper(), 'IS NOT SUPPORTED' )
         else:
             print (name, 'FAIL')
 
-#hash_check('input_file.txt',r"C:\Users\User\projects\three_tasks")
+hash_check('input_file.txt',r"C:\Users\User\projects\three_tasks")

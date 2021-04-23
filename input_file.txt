@@ -1,0 +1,4 @@
+config.xml md5 bdcd1be9dd530b985a7114796dd3be55
+first.py mD5 4b77f60fd79e300756f0bad091cb4086
+file_03.bin md5 6dc2d05c8374293fe20bc4c22c236e2e
+file_04.txt sha11 da39a3ee5e6b4b0d3255bfef95601890afd80709

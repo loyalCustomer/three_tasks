@@ -7,7 +7,7 @@ from xml.dom import minidom
 def is_admin():
     """ Проверяем права"""
     try:
-        # Если администратор вернет True
+        #Если администратор вернет True
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
@@ -15,8 +15,7 @@ def is_admin():
 
 if is_admin():
     # Если пользователь администратор продолжаем скрипт дальше
-    input("Что бы начать копирование нажмите клавишу enter...")
-
+    pass
 else:
     #Перезапускаем скрипт с правами администратора
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable,
